@@ -92,35 +92,35 @@ public:
 	// Helper function
 	void DFSUtil(int v, bool visited[], Adjacency* result)
 	{
-	    // Đánh dấu đỉnh v là đã thăm và thêm vào kết quả
-        visited[v] = true;
-        result->push(v);
-        
-        // Duyệt qua tất cả các đỉnh kề của v
-        for (int i = 0; i < adj[v].getSize(); i++) 
-        {
-            int neighbor = adj[v].getElement(i);
-            // Nếu đỉnh kề chưa được thăm
-            if (!visited[neighbor]) DFSUtil(neighbor, visited, result);
-        }
+	    	// Đánh dấu đỉnh v là đã thăm và thêm vào kết quả
+	        visited[v] = true;
+	        result->push(v);
+	        
+	        // Duyệt qua tất cả các đỉnh kề của v
+	        for (int i = 0; i < adj[v].getSize(); i++) 
+	        {
+	            int neighbor = adj[v].getElement(i);
+	            // Nếu đỉnh kề chưa được thăm
+	            if (!visited[neighbor]) DFSUtil(neighbor, visited, result);
+	        }
 	}
 	
 	Adjacency *DFS(int v)
-    {
-        // v is a vertex we start DFS
-        // Tạo một đối tượng Adjacency để lưu kết quả
-        Adjacency* result = new Adjacency();
-        
-        // Mảng đánh dấu các đỉnh đã thăm
-        bool* visited = new bool[V]();
-        
-        // Gọi hàm DFS đệ quy
-        DFSUtil(v, visited, result);
-        
-        // Giải phóng bộ nhớ mảng visited
-        delete[] visited;
-        
-        // Trả về danh sách kết quả
-        return result;
+    	{
+	        // v is a vertex we start DFS
+	        // Tạo một đối tượng Adjacency để lưu kết quả
+	        Adjacency* result = new Adjacency();
+	        
+	        // Mảng đánh dấu các đỉnh đã thăm
+	        bool* visited = new bool[V]();
+	        
+	        // Gọi hàm DFS đệ quy
+	        DFSUtil(v, visited, result);
+	        
+	        // Giải phóng bộ nhớ mảng visited
+	        delete[] visited;
+	        
+	        // Trả về danh sách kết quả
+	        return result;
 	}
 };
